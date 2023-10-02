@@ -31,5 +31,5 @@
     <role rolename="manager-script"/>
     <role rolename="manager-jmx"/>
 
-    <user name="udacity" password="ecommerce" roles="admin-gui,admin-script,manager-gui,manager-status,manager-script,manager-jmx"/>
+    <user name="tomcat_user" password="tomcat_pass" roles="admin-gui,admin-script,manager-gui,manager-status,manager-script,manager-jmx"/>
 </tomcat-users>

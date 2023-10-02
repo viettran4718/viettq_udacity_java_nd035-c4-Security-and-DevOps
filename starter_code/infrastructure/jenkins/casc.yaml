@@ -12,13 +12,6 @@ jenkins:
         - "Overall/Read:anonymous"
         - "Job/Read:anonymous"
         - "View/Read:anonymous"
-#      remotingSecurity:
-#        enabled: true
-#    security:
-#      queueItemAuthenticator:
-#        authenticators:
-#          - global:
-#              strategy: triggeringUsersAuthorizationStrategy
 credentials:
   system:
     domainCredentials:
@@ -38,7 +31,7 @@ jobs:
       pipelineJob('e-Commerce') {
           description("Udacity Nanodegree e-Commerce Application")
           properties{
-              githubProjectUrl ('https://github.com/edson-a-soares/java_developer_nanodegree/eCommerce')
+              githubProjectUrl ('https://github.com/viettran4718/viettq_udacity_java_nd035-c4-Security-and-DevOps')
           }
           triggers {
               githubPush()
@@ -48,9 +41,9 @@ jobs:
                   scm {
                       git {
                           remote {
-                              url('https://github.com/edson-a-soares/java_developer_nanodegree')
+                              url('https://github.com/viettran4718/viettq_udacity_java_nd035-c4-Security-and-DevOps')
                           }
-                          branch('main')
+                          branch('master')
                       }
                   }
                   scriptPath('eCommerce/Jenkinsfile')
