@@ -1,19 +1,15 @@
-FROM jenkins/jenkins:latest
+FROM jenkins/jenkins:2.414.2-jdk17
 
 USER root
 
-# Docker
-RUN apt-get update -qq \
-    && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 software-properties-common
-RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-RUN add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-   $(lsb_release -cs) \
-   stable"
-RUN apt-get update  -qq \
-#    && apt-get install docker-ce=17.12.1~ce-0~debian -y
-    && apt-get install docker-ce -y
-RUN usermod -aG docker jenkins
+RUN apt-get update && apt-get install -y lsb-release
+RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
+  https://download.docker.com/linux/debian/gpg
+RUN echo "deb [arch=$(dpkg --print-architecture) \
+  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+  https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+RUN apt-get update && apt-get install -y docker-ce-cli
 
 # Maven
 
@@ -35,9 +31,7 @@ USER jenkins
 # Skip initial setup
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
-# Install the needed plugins
-COPY infrastructure/jenkins/plugins.txt /usr/share/jenkins/ref/plugins.txt
-RUN jenkins-plugin-cli --plugins < /usr/share/jenkins/ref/plugins.txt
+RUN jenkins-plugin-cli --plugins "deploy publish-over-ssh code-coverage-api cobertura docker-workflow docker-plugin blueocean job-dsl build-timeout cloudbees-folder configuration-as-code git github-branch-source matrix-auth pipeline-github-lib pipeline-stage-view ssh-slaves timestamper workflow-aggregator ws-cleanup"
 
 # Setup Jenkins using Jenkins server using Jenkins Configuration as Code
 ENV CASC_JENKINS_CONFIG /var/jenkins_home/casc.yaml

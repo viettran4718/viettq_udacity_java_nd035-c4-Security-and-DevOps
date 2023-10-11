@@ -1,7 +1,7 @@
 jenkins:
   securityRealm:
     local:
-      allowsSignup: false
+      allowsSignup: true
       users:
         - id: ${JENKINS_USER}
           password: ${JENKINS_PASSWORD}
@@ -46,7 +46,7 @@ jobs:
                           branch('master')
                       }
                   }
-                  scriptPath('eCommerce/Jenkinsfile')
+                  scriptPath('Jenkinsfile')
               }
           }
       }
