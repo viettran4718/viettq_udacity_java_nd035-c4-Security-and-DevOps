@@ -31,7 +31,7 @@ jobs:
       pipelineJob('e-Commerce') {
           description("Udacity Nanodegree e-Commerce Application")
           properties{
-              githubProjectUrl ('https://github.com/viettran4718/viettq_udacity_java_nd035-c4-Security-and-DevOps')
+              githubProjectUrl ('https://github.com/viettran4718/viettq_udacity_java_nd035-c4-Security-and-DevOps.git')
           }
           triggers {
               githubPush()
@@ -41,7 +41,7 @@ jobs:
                   scm {
                       git {
                           remote {
-                              url('https://github.com/viettran4718/viettq_udacity_java_nd035-c4-Security-and-DevOps')
+                              url('https://github.com/viettran4718/viettq_udacity_java_nd035-c4-Security-and-DevOps.git')
                           }
                           branch('master')
                       }

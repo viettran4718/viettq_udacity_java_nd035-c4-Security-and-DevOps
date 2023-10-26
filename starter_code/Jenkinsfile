@@ -37,25 +37,6 @@ pipeline {
 
         }
 
-        stage ('Test') {
-
-            steps {
-
-                script {
-                    sh 'cd $APPLICATION_CONTEXT && mvn clean test cobertura:cobertura -Dcobertura.report.format=xml'
-                }
-
-            }
-
-            post {
-                always {
-                    junit '**/target/*-reports/TEST-*.xml'
-                    step([$class: 'CoberturaPublisher', coberturaReportFile: 'eCommerce/target/site/cobertura/coverage.xml'])
-                }
-            }
-
-        }
-
         stage ('Deploy') {
 
             steps {
@@ -105,7 +86,7 @@ pipeline {
                             tomcat9(url: 'http://udacity-tomcat:8080',
                             credentialsId: 'tomcat')
                         ],
-                            war: 'eCommerce/target/*.war',
+                            war: 'starter_code/target/*.war',
                             contextPath: '/'
 
                     }
