@@ -40,7 +40,7 @@ pipeline {
 
             steps {
 
-                deploy adapters: [tomcat8(credentialsId: '594a5d9e-3cda-4ee1-8adc-dbc274b3761a', path: '', url: 'http://171.224.24.124:8080/')], contextPath: 'starter_code', war: '**/*.war'
+                deploy adapters: [tomcat8(credentialsId: '594a5d9e-3cda-4ee1-8adc-dbc274b3761a', path: '', url: 'http://171.224.24.124:8080/')], contextPath: 'project4-app', war: '**/*.war'
 
             }       // Steps
 
