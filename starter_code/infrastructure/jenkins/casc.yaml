@@ -5,13 +5,20 @@ jenkins:
       users:
         - id: ${JENKINS_USER}
           password: ${JENKINS_PASSWORD}
+  # authorizationStrategy:
+  #   globalMatrix:
+  #     permissions:
+  #       - "Overall/Administer:ecommerce"
+  #       - "Overall/Read:anonymous"
+  #       - "Job/Read:anonymous"
+  #       - "View/Read:anonymous"
   authorizationStrategy:
-    globalMatrix:
-      permissions:
-        - "Overall/Administer:ecommerce"
-        - "Overall/Read:anonymous"
-        - "Job/Read:anonymous"
-        - "View/Read:anonymous"
+    loggedInUsersCanDoAnything: true
+  security:
+    globalJobDslRead: true
+    agentBuild: true
+    scmTag: true
+
 credentials:
   system:
     domainCredentials:
