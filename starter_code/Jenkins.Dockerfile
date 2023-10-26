@@ -1,5 +1,5 @@
-#FROM jenkins/jenkins:2.414.2-jdk17
-FROM jenkins@lastest
+FROM jenkins/jenkins:2.414.3-jdk17
+# FROM jenkins/jenkins:lts
 USER root
 
 RUN apt-get update && apt-get install -y lsb-release
@@ -29,10 +29,10 @@ ENV PATH $M2:$PATH
 USER jenkins
 
 # Skip initial setup
-ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
+# ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
-RUN jenkins-plugin-cli --plugins "deploy publish-over-ssh code-coverage-api cobertura docker-workflow docker-plugin blueocean job-dsl build-timeout cloudbees-folder configuration-as-code git github-branch-source matrix-auth pipeline-github-lib pipeline-stage-view ssh-slaves timestamper workflow-aggregator ws-cleanup"
+# RUN jenkins-plugin-cli --plugins "deploy publish-over-ssh code-coverage-api cobertura docker-workflow docker-plugin blueocean job-dsl build-timeout cloudbees-folder configuration-as-code git github-branch-source matrix-auth pipeline-github-lib pipeline-stage-view ssh-slaves timestamper workflow-aggregator ws-cleanup"
 
-# Setup Jenkins using Jenkins server using Jenkins Configuration as Code
-ENV CASC_JENKINS_CONFIG /var/jenkins_home/casc.yaml
-COPY infrastructure/jenkins/casc.yaml /var/jenkins_home/casc.yaml
+# # Setup Jenkins using Jenkins server using Jenkins Configuration as Code
+# ENV CASC_JENKINS_CONFIG /var/jenkins_home/casc.yaml
+# COPY infrastructure/jenkins/casc.yaml /var/jenkins_home/casc.yaml
