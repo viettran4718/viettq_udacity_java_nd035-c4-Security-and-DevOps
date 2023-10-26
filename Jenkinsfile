@@ -10,9 +10,10 @@ pipeline {
     }
 
     environment {
-        PROJECT_REPOSITORY_DIRECTORY = "starter_code"
-        APPLICATION_WAR_FILE = "target/ecommerce-0.0.1.war"
-        APPLICATION_CONTEXT = "$WORKSPACE/$PROJECT_REPOSITORY_DIRECTORY"
+        // PROJECT_REPOSITORY_DIRECTORY = "starter_code"
+        // APPLICATION_WAR_FILE = "target/ecommerce-0.0.1.war"
+        // APPLICATION_CONTEXT = "$WORKSPACE/$PROJECT_REPOSITORY_DIRECTORY"
+        APPLICATION_CONTEXT = "starter_code"
     }
     stages {
 
