@@ -34,7 +34,7 @@ services:
       resources:
         limits:
           cpus: '0.5'
-          memory: 4g
+          memory: 2g
     container_name: udacity-splunk
     ports:
       - 8000:8000
@@ -53,7 +53,7 @@ services:
       resources:
         limits:
           cpus: '0.5'
-          memory: 4g
+          memory: 2g
     container_name: udacity-jenkins
     restart: on-failure
     environment:
