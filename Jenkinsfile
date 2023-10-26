@@ -1,7 +1,12 @@
 pipeline {
 
-    agent {
-        docker { image 'maven:3.9.4-openjdk-8-slim' }
+    // agent {
+    //     docker { image 'maven:3.9.4-openjdk-8-slim' }
+    // }
+
+    agent any
+    tools {
+        maven 'local_maven'
     }
 
     environment {
