@@ -6,6 +6,11 @@ services:
       context: .
       dockerfile: Tomcat.Dockerfile
     image: udacity-tomcat
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 4g
     container_name: udacity-tomcat
     ports:
       - 8080:8080
@@ -25,6 +30,11 @@ services:
       - "SPLUNK_PASSWORD=admin123456"
     hostname: splunk
     image: splunk/splunk:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 4g
     container_name: udacity-splunk
     ports:
       - 8000:8000
@@ -39,6 +49,11 @@ services:
       context: .
       dockerfile: Jenkins.Dockerfile
     image: udacity-jenkins
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 4g
     container_name: udacity-jenkins
     restart: on-failure
     environment:

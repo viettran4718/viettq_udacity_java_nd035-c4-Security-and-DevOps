@@ -53,7 +53,7 @@ jobs:
                           branch('master')
                       }
                   }
-                  scriptPath('Jenkinsfile')
+                  scriptPath('starter_code/Jenkinsfile')
               }
           }
       }

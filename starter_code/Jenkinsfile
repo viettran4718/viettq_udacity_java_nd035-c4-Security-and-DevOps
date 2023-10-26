@@ -28,7 +28,7 @@ pipeline {
         stage ('Build') {
 
             steps {
-
+                bat 'set'
                 script {
                     sh 'cd $APPLICATION_CONTEXT && mvn -B -DskipTests clean package'
                 }
@@ -42,7 +42,7 @@ pipeline {
             steps {
 
                 script {
-
+                    bat 'set'
                     def deploy_application = false
 
                     try {
