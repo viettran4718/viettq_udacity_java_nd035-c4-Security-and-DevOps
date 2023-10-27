@@ -9,14 +9,10 @@ services:
     container_name: udacity-tomcat
     ports:
       - 8080:8080
-    #    logging:
-    #      driver: splunk
-    #      options:
-    #        splunk-url: https://172.20.0.4:8088
-    #        splunk-token: ""
-    #        splunk-insecureskipverify: 'true'
     networks:
       - cluster
+    volumes:
+      - tomcat-data:/usr/local/tomcat/webapps:Z
 
   splunk:
     environment:
@@ -47,7 +43,7 @@ services:
       TOMCAT_USER: tomcat_user
       TOMCAT_PASSWORD: tomcat_pass
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - jenkins_data:/var/jenkins_home
     ports:
       - 9000:8080
     networks:
@@ -56,3 +52,6 @@ services:
 networks:
   cluster:
     driver: bridge
+volumes:
+  tomcat-data:
+  jenkins_data:

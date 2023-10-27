@@ -28,8 +28,8 @@ ENV PATH $M2:$PATH
 
 USER jenkins
 
-# Skip initial setup
-# ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
+#Skip initial setup
+ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
 # RUN jenkins-plugin-cli --plugins "deploy publish-over-ssh code-coverage-api cobertura docker-workflow docker-plugin blueocean job-dsl build-timeout cloudbees-folder configuration-as-code git github-branch-source matrix-auth pipeline-github-lib pipeline-stage-view ssh-slaves timestamper workflow-aggregator ws-cleanup"
 
